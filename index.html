@@ -1,1 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aruleeswaran K — Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#06070f;--bg2:#0d0f1e;--surface:#111326;--card:#161829;--card2:#1c1f35;--accent:#6c63ff;--accent2:#ff6584;--accent3:#43e97b;--gold:#ffd166;--cyan:#38bdf8;--text:#e2e4f0;--muted:#6b7194;--border:rgba(108,99,255,0.15);--border2:rgba(255,255,255,0.06);--shadow:0 20px 60px rgba(108,99,255,0.15);--r:16px;}
+[data-theme="light"]{--bg:#f0f2ff;--bg2:#e8eaf8;--surface:#ffffff;--card:#ffffff;--card2:#f4f5ff;--text:#1a1b2e;--muted:#6b7194;--border:rgba(108,99,255,0.2);--border2:rgba(0,0,0,0.07);--shadow:0 20px 60px rgba(108,99,255,0.12);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;transition:background 0.4s,color 0.4s;}
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.15;animation:floatorb 12s ease-in-out infinite;}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,#6c63ff,transparent);top:-200px;right:-100px;animation-delay:0s;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,#ff6584,transparent);bottom:-100px;left:-100px;animation-delay:-4s;}
+.orb3{width:350px;height:350px;background:radial-gradient(circle,#43e97b,transparent);top:50%;left:38%;animation-delay:-8s;}
+@keyframes floatorb{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-40px) scale(1.06);}}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--border2) 1px,transparent 1px),linear-gradient(90deg,var(--border2) 1px,transparent 1px);background-size:52px 52px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 5%;background:rgba(6,7,15,0.82);backdrop-filter:blur(24px);border-bottom:1px solid var(--border2);transition:background 0.4s;}
+[data-theme="light"] nav{background:rgba(240,242,255,0.88);}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--muted);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(--accent);}
+.theme-btn{background:var(--card);border:1px solid var(--border);border-radius:50px;padding:0.4rem 1rem;font-size:0.78rem;cursor:pointer;color:var(--text);transition:all 0.3s;font-family:'JetBrains Mono',monospace;}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;padding:7rem 5% 4rem;position:relative;z-index:1;gap:3rem;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;padding:0.45rem 1.1rem;border:1px solid rgba(108,99,255,0.35);border-radius:50px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:0.07em;margin-bottom:1.5rem;animation:sUp 0.8s ease both;}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--accent3);animation:ppulse 2s infinite;}
+@keyframes ppulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.5);}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em;animation:sUp 0.9s 0.1s ease both;}
+.l1{display:block;color:var(--text);}
+.l2{display:block;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{margin-top:1.2rem;font-size:1rem;color:var(--muted);line-height:1.8;max-width:500px;animation:sUp 1s 0.2s ease both;}
+.hero-locs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;animation:sUp 1s 0.25s ease both;}
+.lchip{font-family:'JetBrains Mono',monospace;font-size:0.68rem;padding:0.28rem 0.8rem;border:1px solid rgba(108,99,255,0.3);border-radius:50px;color:var(--accent);background:rgba(108,99,255,0.07);}
+.hero-btns{display:flex;gap:1rem;margin-top:2rem;animation:sUp 1s 0.3s ease both;flex-wrap:wrap;}
+.btnp{padding:0.8rem 2rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-weight:600;font-size:0.9rem;cursor:pointer;text-decoration:none;transition:all 0.3s;box-shadow:0 8px 25px rgba(108,99,255,0.35);}
+.btnp:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(108,99,255,0.5);}
+.btng{padding:0.8rem 2rem;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:var(--r);font-family:'Inter',sans-serif;font-weight:400;font-size:0.9rem;cursor:pointer;text-decoration:none;transition:all 0.3s;}
+.btng:hover{border-color:var(--accent);color:var(--accent);}
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:2rem;animation:sUp 1s 0.4s ease both;}
+.av-scene{position:relative;width:300px;height:300px;}
+.av-hex{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.av-hex svg{animation:rslow 15s linear infinite;}
+@keyframes rslow{to{transform:rotate(360deg);}}
+.av-core{position:absolute;inset:22px;border-radius:50%;background:linear-gradient(135deg,var(--surface),var(--card2));border:2px solid rgba(108,99,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:var(--accent);}
+.fbadge{position:absolute;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:0.45rem 0.8rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;white-space:nowrap;box-shadow:var(--shadow);animation:fbfloat 4s ease-in-out infinite;}
+.fb1{top:8px;right:-18px;color:var(--accent3);animation-delay:0s;}
+.fb2{bottom:28px;right:-28px;color:var(--gold);animation-delay:-1.5s;}
+.fb3{bottom:18px;left:-28px;color:var(--accent2);animation-delay:-3s;}
+@keyframes fbfloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.stat-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+.statc{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1rem 1.3rem;text-align:center;transition:all 0.3s;}
+.statc:hover{border-color:var(--accent);transform:translateY(-3px);}
+.statn{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.statl{font-size:0.66rem;color:var(--muted);margin-top:0.3rem;font-family:'JetBrains Mono',monospace;}
+.sw{padding:6rem 5%;max-width:1280px;margin:0 auto;position:relative;z-index:1;}
+.sh{display:flex;align-items:center;gap:1.2rem;margin-bottom:3.5rem;}
+.snum{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent2);letter-spacing:0.1em;background:rgba(255,101,132,0.08);padding:0.3rem 0.7rem;border-radius:50px;border:1px solid rgba(255,101,132,0.2);}
+.stitle{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800;letter-spacing:-0.02em;}
+.sline{flex:1;height:1px;background:var(--border2);}
+.strip{background:var(--surface);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);position:relative;z-index:1;}
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.kc{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:1.8rem;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;}
+.kc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(108,99,255,0.04),transparent);pointer-events:none;}
+.kc:hover{border-color:var(--accent);transform:scale(1.03);}
+.kv{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.kd{font-size:0.8rem;color:var(--muted);margin-top:0.5rem;line-height:1.5;}
+.bvis{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:2rem;grid-column:span 2;}
+.bvt{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;}
+.bars{display:flex;align-items:flex-end;gap:12px;height:100px;}
+.bg2{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;}
+.bb{width:100%;border-radius:6px 6px 0 0;}
+.bl{font-size:0.6rem;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.at p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:1rem;}
+.at p strong{color:var(--text);font-weight:600;}
+.aimg{border-radius:20px;overflow:hidden;position:relative;height:360px;background:linear-gradient(135deg,var(--surface),var(--card2));border:1px solid var(--border);}
+.aii{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;}
+.aicon{font-size:3.8rem;filter:drop-shadow(0 0 20px rgba(108,99,255,0.5));}
+.alabel{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);letter-spacing:0.1em;}
+.abadge{position:absolute;bottom:-12px;right:-12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:0.7rem 1.1rem;border-radius:12px;font-weight:700;font-size:0.82rem;box-shadow:0 8px 25px rgba(108,99,255,0.4);}
+.aw{position:relative;}
+.etl{position:relative;padding-left:2rem;}
+.etl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent2),var(--accent3),transparent);}
+.ei{position:relative;padding:0 0 2.5rem 3rem;}
+.edot{position:absolute;left:-2.5rem;top:0.4rem;width:16px;height:16px;border-radius:50%;border:3px solid var(--bg);}
+.ecard{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;}
+.ecard::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transition:transform 0.4s;transform-origin:left;}
+.ecard:hover::after{transform:scaleX(1);}
+.ecard:hover{border-color:rgba(108,99,255,0.25);transform:translateX(6px);box-shadow:var(--shadow);}
+.ehd{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;}
+.eco{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;}
+.edate{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent);background:rgba(108,99,255,0.08);padding:0.3rem 0.8rem;border-radius:50px;border:1px solid rgba(108,99,255,0.2);}
+.erole{font-size:0.86rem;color:var(--accent2);margin-bottom:1.1rem;font-weight:500;}
+.cbadge{background:linear-gradient(135deg,var(--accent3),#22c55e);color:#000;font-size:0.6rem;font-weight:700;padding:0.18rem 0.6rem;border-radius:50px;font-family:'JetBrains Mono',monospace;vertical-align:middle;margin-left:0.5rem;}
+.eul{list-style:none;}
+.eul li{display:flex;gap:0.7rem;font-size:0.87rem;color:var(--muted);margin-bottom:0.6rem;line-height:1.65;}
+.eul li::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:0.1rem;}
+.eul li strong{color:var(--text);}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.scard{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:1.8rem;transition:all 0.3s;position:relative;overflow:hidden;}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.scard.sc1::before{background:linear-gradient(90deg,var(--accent),var(--cyan));}
+.scard.sc2::before{background:linear-gradient(90deg,var(--accent2),var(--gold));}
+.scard.sc3::before{background:linear-gradient(90deg,var(--accent3),var(--cyan));}
+.scard.sc4::before{background:linear-gradient(90deg,var(--gold),var(--accent2));}
+.scard.sc5::before{background:linear-gradient(90deg,var(--cyan),var(--accent));}
+.scard.sc6::before{background:linear-gradient(90deg,var(--accent2),var(--accent3));}
+.scard:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(108,99,255,0.25);}
+.si{font-size:2rem;margin-bottom:1rem;}
+.st{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:1.1rem;}
+.pills{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.pill{display:inline-block;padding:0.27rem 0.72rem;border-radius:50px;font-size:0.7rem;font-family:'JetBrains Mono',monospace;border:1px solid;transition:all 0.2s;}
+.pill:hover{transform:scale(1.05);}
+.p1{background:rgba(108,99,255,0.08);border-color:rgba(108,99,255,0.25);color:var(--accent);}
+.p2{background:rgba(255,101,132,0.08);border-color:rgba(255,101,132,0.25);color:var(--accent2);}
+.p3{background:rgba(67,233,123,0.08);border-color:rgba(67,233,123,0.25);color:var(--accent3);}
+.p4{background:rgba(255,209,102,0.08);border-color:rgba(255,209,102,0.25);color:var(--gold);}
+.p5{background:rgba(56,189,248,0.08);border-color:rgba(56,189,248,0.25);color:var(--cyan);}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+.pcard{background:var(--card);border:1px solid var(--border2);border-radius:24px;overflow:hidden;transition:all 0.4s;position:relative;}
+.pcard:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,0.4);border-color:rgba(108,99,255,0.3);}
+.pthumb{height:210px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pbody{padding:1.8rem;}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:0.67rem;color:var(--accent2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;}
+.ptitle{font-family:'Syne',sans-serif;font-size:1.28rem;font-weight:700;margin-bottom:0.8rem;}
+.pdesc{font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;}
+.pfeats{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.feat{font-size:0.67rem;padding:0.22rem 0.65rem;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:50px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+.nbadge{position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:0.6rem;font-weight:700;padding:0.25rem 0.7rem;border-radius:50px;font-family:'JetBrains Mono',monospace;z-index:2;}
+.estack{display:flex;flex-direction:column;gap:1.5rem;}
+.edcard{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2.2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;transition:all 0.3s;position:relative;overflow:hidden;}
+.edcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px 0 0 4px;}
+.edcard.ed1::before{background:linear-gradient(to bottom,var(--accent),var(--accent2));}
+.edcard.ed2::before{background:linear-gradient(to bottom,var(--gold),var(--accent2));}
+.edcard:hover{border-color:rgba(108,99,255,0.25);transform:translateX(4px);box-shadow:var(--shadow);}
+.edinst{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.4rem;}
+.eddeg{font-size:0.9rem;color:var(--muted);margin-bottom:0.8rem;}
+.edchips{display:flex;gap:0.7rem;flex-wrap:wrap;}
+.edch{font-family:'JetBrains Mono',monospace;font-size:0.7rem;padding:0.28rem 0.8rem;border-radius:50px;}
+.edch.g{background:rgba(67,233,123,0.08);border:1px solid rgba(67,233,123,0.2);color:var(--accent3);}
+.edch.b{background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);color:var(--cyan);}
+.gbox{text-align:center;}
+.gn{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.gl{font-family:'JetBrains Mono',monospace;font-size:0.67rem;color:var(--muted);margin-top:0.3rem;}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.ccard{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:1.8rem;display:flex;flex-direction:column;gap:0.8rem;transition:all 0.3s;position:relative;overflow:hidden;}
+.ccard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform 0.3s;transform-origin:left;}
+.ccard.cc1::after{background:linear-gradient(90deg,var(--accent),var(--cyan));}
+.ccard.cc2::after{background:linear-gradient(90deg,var(--accent2),var(--gold));}
+.ccard.cc3::after{background:linear-gradient(90deg,var(--accent3),var(--cyan));}
+.ccard:hover::after{transform:scaleX(1);}
+.ccard:hover{border-color:rgba(108,99,255,0.25);transform:translateY(-5px);}
+.cicon{font-size:2rem;}
+.cname{font-family:'Syne',sans-serif;font-size:0.96rem;font-weight:700;line-height:1.4;}
+.cyr{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent);}
+.conwrap{background:var(--surface);border-top:1px solid var(--border2);padding:6rem 5%;text-align:center;position:relative;z-index:1;overflow:hidden;}
+.conwrap::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(108,99,255,0.06) 0%,transparent 70%);pointer-events:none;}
+.contitle{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;}
+.consub{color:var(--muted);font-size:1rem;margin-bottom:3rem;}
+.conlinks{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;}
+.clink{display:flex;align-items:center;gap:0.7rem;padding:0.9rem 1.6rem;background:var(--card);border:1px solid var(--border2);border-radius:14px;color:var(--text);text-decoration:none;font-size:0.87rem;transition:all 0.3s;}
+.clink:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 25px rgba(108,99,255,0.15);}
+footer{padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border2);font-size:0.76rem;color:var(--muted);font-family:'JetBrains Mono',monospace;position:relative;z-index:1;}
+@keyframes sUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.fade-in{opacity:0;transform:translateY(22px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1);}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px;}
+@media(max-width:900px){nav{padding:1rem 4%;}.nav-links{display:none;}.hero{grid-template-columns:1fr;padding:6rem 4% 3rem;text-align:center;gap:2rem;}.hero-right{order:-1;}.hero-locs,.hero-btns{justify-content:center;}.hero-sub{margin:1rem auto 0;}.sw{padding:4rem 4%;}.about-grid,.sgrid,.pgrid,.kgrid,.cgrid{grid-template-columns:1fr;}.bvis{grid-column:span 1;}.edcard{grid-template-columns:1fr;text-align:center;}.edchips{justify-content:center;}footer{flex-direction:column;gap:0.5rem;text-align:center;}.conwrap{padding:4rem 4%;}.av-scene{width:240px;height:240px;}.av-core{font-size:3rem;}}
+@media(max-width:600px){.hero h1{font-size:2.4rem;}.stitle{font-size:1.8rem;}.stat-row{gap:0.6rem;}.statc{padding:0.7rem 1rem;}}
+</style>
+</head>
+<body>
 
+<div class="bg-canvas">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-logo">AK.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span class="pdot"></span>Open to Work — Data Analyst Roles</div>
+    <h1><span class="l1">Aruleeswaran</span><span class="l2">K</span></h1>
+    <p class="hero-sub">Detail-oriented <strong>Data Analyst</strong> with hands-on experience in Excel, Power BI, SQL &amp; Python — turning raw data into clear, actionable business insights.</p>
+    <div class="hero-locs">
+      <span class="lchip">📍 Hosur, TN</span>
+      <span class="lchip">Chennai</span>
+      <span class="lchip">Bengaluru</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btnp">Get in Touch</a>
+      <a href="#experience" class="btng">View Work</a>
+      <a href="https://aruleeswaran1.github.io/portfolio/" target="_blank" class="btng">Live Portfolio ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="av-scene">
+      <div class="av-hex">
+        <svg width="300" height="300" viewBox="0 0 300 300">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6c63ff" stop-opacity="0.7"/>
+              <stop offset="50%" stop-color="#ff6584" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#43e97b" stop-opacity="0.7"/>
+            </linearGradient>
+          </defs>
+          <polygon points="150,10 280,80 280,220 150,290 20,220 20,80" fill="none" stroke="url(#hg)" stroke-width="1.5"/>
+          <polygon points="150,35 255,97 255,203 150,265 45,203 45,97" fill="none" stroke="url(#hg)" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="150" cy="10" r="4" fill="#6c63ff"/>
+          <circle cx="280" cy="80" r="4" fill="#ff6584"/>
+          <circle cx="280" cy="220" r="4" fill="#43e97b"/>
+          <circle cx="150" cy="290" r="4" fill="#ffd166"/>
+          <circle cx="20" cy="220" r="4" fill="#38bdf8"/>
+          <circle cx="20" cy="80" r="4" fill="#6c63ff"/>
+        </svg>
+      </div>
+      <div class="av-core">AK</div>
+      <div class="fbadge fb1">📊 Power BI</div>
+      <div class="fbadge fb2">🐍 Python</div>
+      <div class="fbadge fb3">📗 Excel</div>
+    </div>
+    <div class="stat-row">
+      <div class="statc"><div class="statn">3</div><div class="statl">Internships</div></div>
+      <div class="statc"><div class="statn">150+</div><div class="statl">Employees</div></div>
+      <div class="statc"><div class="statn">7.61</div><div class="statl">CGPA</div></div>
+      <div class="statc"><div class="statn">3</div><div class="statl">Certs</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KPI STRIP -->
+<div class="strip">
+  <div class="sw" style="padding:4rem 5%;">
+    <div class="kgrid fade-in">
+      <div class="kc"><div class="kv">30%</div><div class="kd">Reduced manual reporting effort at NextGen Solutions</div></div>
+      <div class="kc"><div class="kv">150+</div><div class="kd">Employees tracked via MIS attendance dashboards</div></div>
+      <div class="bvis">
+        <div class="bvt">Technical Skill Proficiency</div>
+        <div class="bars">
+          <div class="bg2"><div class="bb" style="height:95px;background:linear-gradient(to top,#6c63ff,#a89bff);"></div><div class="bl">Excel</div></div>
+          <div class="bg2"><div class="bb" style="height:88px;background:linear-gradient(to top,#6c63ff,#a89bff);"></div><div class="bl">Power BI</div></div>
+          <div class="bg2"><div class="bb" style="height:76px;background:linear-gradient(to top,#ff6584,#ffaabb);"></div><div class="bl">SQL</div></div>
+          <div class="bg2"><div class="bb" style="height:64px;background:linear-gradient(to top,#ff6584,#ffaabb);"></div><div class="bl">Python</div></div>
+          <div class="bg2"><div class="bb" style="height:90px;background:linear-gradient(to top,#43e97b,#a8f0c0);"></div><div class="bl">MIS</div></div>
+          <div class="bg2"><div class="bb" style="height:82px;background:linear-gradient(to top,#ffd166,#ffe8a0);"></div><div class="bl">Data Viz</div></div>
+        </div>
+      </div>
+      <div class="kc"><div class="kv">2026</div><div class="kd">Graduating B.E. ECE — Adhiyamaan College</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="sw" id="about">
+  <div class="sh fade-in"><span class="snum">01</span><h2 class="stitle">About Me</h2><div class="sline"></div></div>
+  <div class="about-grid">
+    <div class="at fade-in">
+      <p>I'm <strong>Aruleeswaran K</strong>, a final-year B.E. ECE student at Adhiyamaan College of Engineering, Krishnagiri, Tamil Nadu — passionate about transforming raw data into decisions that matter.</p>
+      <p>With <strong>3 internships</strong> across Nathan Engineering (Bengaluru), Arka Technologies (Hosur), and NextGen Solutions, I've built real-world experience in <strong>data validation, SQL-based analysis, Python scripting, MIS reporting, and Power BI dashboarding</strong>.</p>
+      <p>I'm actively seeking <strong>Data Analyst or Business Analyst roles</strong> in Tamil Nadu, Chennai, or Bengaluru — open to hybrid and in-office opportunities.</p>
+    </div>
+    <div class="aw fade-in">
+      <div class="aimg">
+        <div class="aii">
+          <div class="aicon">📊</div>
+          <div class="alabel">DATA × INSIGHTS × DECISIONS</div>
+          <svg width="200" height="55" viewBox="0 0 200 55">
+            <polyline points="0,48 30,33 60,38 90,14 120,24 150,9 180,19 200,4" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <polyline points="0,52 30,45 60,50 90,28 120,38 150,20 180,30 200,16" fill="none" stroke="#ff6584" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+            <polyline points="0,55 30,50 60,53 90,38 120,44 150,32 180,40 200,28" fill="none" stroke="#43e97b" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="abadge">📍 Hosur, Tamil Nadu</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="strip">
+<div class="sw" id="experience">
+  <div class="sh fade-in"><span class="snum">02</span><h2 class="stitle">Experience</h2><div class="sline"></div></div>
+  <div class="etl">
+    <div class="ei fade-in">
+      <div class="edot" style="color:#43e97b;background:#43e97b;box-shadow:0 0 14px #43e97b;border-color:var(--bg);"></div>
+      <div class="ecard">
+        <div class="ehd">
+          <div class="eco">Nathan Engineering <span class="cbadge">CURRENT</span></div>
+          <div class="edate">Feb 2026 – Present</div>
+        </div>
+        <div class="erole">Data Validation Intern · Bengaluru, Karnataka</div>
+        <ul class="eul">
+          <li>Validated production records and attendance data to ensure accuracy, completeness, and consistency across datasets</li>
+          <li>Performed data cleaning — identified and resolved missing values, duplicates, and formatting errors in raw records</li>
+          <li>Generated structured reports summarizing validation results, supporting operational decision-making for the engineering team</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ei fade-in">
+      <div class="edot" style="color:#6c63ff;background:#6c63ff;box-shadow:0 0 12px #6c63ff;border-color:var(--bg);"></div>
+      <div class="ecard">
+        <div class="ehd">
+          <div class="eco">Arka Technologies</div>
+          <div class="edate">Jan 2026 – Feb 2026</div>
+        </div>
+        <div class="erole">Data Analyst Intern · Hosur, Tamil Nadu</div>
+        <ul class="eul">
+          <li>Performed data analysis using <strong>SQL and Python</strong> to extract insights from structured datasets</li>
+          <li>Cleaned and transformed data for reporting; supported analyst team with visualization and summary tasks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ei fade-in">
+      <div class="edot" style="color:#ffd166;background:#ffd166;box-shadow:0 0 12px #ffd166;border-color:var(--bg);"></div>
+      <div class="ecard">
+        <div class="ehd">
+          <div class="eco">NextGen Solutions</div>
+          <div class="edate">Jun 2025 – Jul 2025</div>
+        </div>
+        <div class="erole">Python &amp; Data Intern · Hybrid</div>
+        <ul class="eul">
+          <li>Created daily and monthly MIS reports for attendance tracking (~<strong>150 employees</strong>) using Excel</li>
+          <li>Built Excel dashboards with charts and slicers, reducing manual reporting effort by <strong>30%</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SKILLS -->
+<div class="sw" id="skills">
+  <div class="sh fade-in"><span class="snum">03</span><h2 class="stitle">Skills</h2><div class="sline"></div></div>
+  <div class="sgrid">
+    <div class="scard sc1 fade-in"><div class="si">📗</div><div class="st">Excel</div><div class="pills"><span class="pill p1">Pivot Tables</span><span class="pill p1">XLOOKUP</span><span class="pill p1">VLOOKUP</span><span class="pill p1">INDEX-MATCH</span><span class="pill p1">SUMIFS</span><span class="pill p1">Slicers</span><span class="pill p1">Charts</span></div></div>
+    <div class="scard sc2 fade-in"><div class="si">📊</div><div class="st">Power BI</div><div class="pills"><span class="pill p2">KPI Cards</span><span class="pill p2">Bar Charts</span><span class="pill p2">Donut Charts</span><span class="pill p2">Scatter Charts</span><span class="pill p2">DAX</span><span class="pill p2">Dynamic Filters</span><span class="pill p2">Year Slicers</span></div></div>
+    <div class="scard sc3 fade-in"><div class="si">🐍</div><div class="st">Python</div><div class="pills"><span class="pill p3">Pandas</span><span class="pill p3">Data Analysis</span><span class="pill p3">Data Basics</span></div></div>
+    <div class="scard sc4 fade-in"><div class="si">🗄️</div><div class="st">SQL</div><div class="pills"><span class="pill p4">SELECT / WHERE</span><span class="pill p4">JOIN</span><span class="pill p4">GROUP BY</span><span class="pill p4">Subqueries</span><span class="pill p4">Aggregations</span></div></div>
+    <div class="scard sc5 fade-in"><div class="si">🔍</div><div class="st">Data Handling</div><div class="pills"><span class="pill p5">Data Cleaning</span><span class="pill p5">Validation</span><span class="pill p5">MIS Reporting</span><span class="pill p5">Data Visualization</span></div></div>
+    <div class="scard sc6 fade-in"><div class="si">🛠️</div><div class="st">Tools &amp; Competencies</div><div class="pills"><span class="pill p2">MS Office</span><span class="pill p3">Google Sheets</span><span class="pill p1">Dashboard Dev</span><span class="pill p4">Business Analysis</span><span class="pill p5">Excel Automation</span></div></div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="strip">
+<div class="sw" id="projects">
+  <div class="sh fade-in"><span class="snum">04</span><h2 class="stitle">Projects</h2><div class="sline"></div></div>
+  <div class="pgrid">
+    <div class="pcard fade-in">
+      <div class="pthumb" style="background:linear-gradient(135deg,#1a0810,#200d18,#120a20);">
+        <div style="position:relative;z-index:1;width:90%;display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;padding:1rem;">
+          <div style="background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.3);border-radius:10px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:800;color:#a89bff;font-family:'Syne',sans-serif;">1.11K</div>
+            <div style="font-size:0.52rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">PRODUCTIONS</div>
+          </div>
+          <div style="background:rgba(255,101,132,0.12);border:1px solid rgba(255,101,132,0.25);border-radius:10px;padding:0.8rem;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:800;color:#ff9aaa;font-family:'Syne',sans-serif;">170.96</div>
+            <div style="font-size:0.52rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">AVG HP</div>
+          </div>
+          <div style="background:rgba(67,233,123,0.08);border:1px solid rgba(67,233,123,0.2);border-radius:10px;padding:0.8rem;display:flex;flex-direction:column;gap:5px;">
+            <div style="height:7px;width:95%;background:linear-gradient(90deg,#6c63ff,#a89bff);border-radius:4px;"></div>
+            <div style="height:7px;width:80%;background:linear-gradient(90deg,#ff6584,#ffaabb);border-radius:4px;"></div>
+            <div style="height:7px;width:72%;background:linear-gradient(90deg,#43e97b,#a8f0c0);border-radius:4px;"></div>
+            <div style="height:7px;width:60%;background:linear-gradient(90deg,#ffd166,#ffe8a0);border-radius:4px;"></div>
+          </div>
+          <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:10px;padding:0.6rem;display:flex;align-items:center;justify-content:center;">
+            <svg width="55" height="55" viewBox="0 0 55 55"><circle cx="27" cy="27" r="20" fill="none" stroke="#6c63ff" stroke-width="8" stroke-dasharray="62 64" stroke-dashoffset="16" opacity="0.9"/><circle cx="27" cy="27" r="20" fill="none" stroke="#ff6584" stroke-width="8" stroke-dasharray="37 89" stroke-dashoffset="-46" opacity="0.8"/><circle cx="27" cy="27" r="20" fill="none" stroke="#43e97b" stroke-width="8" stroke-dasharray="26 100" stroke-dashoffset="-83" opacity="0.8"/></svg>
+          </div>
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,var(--card));pointer-events:none;"></div>
+        <div class="nbadge">NEW ✦ 2026</div>
+      </div>
+      <div class="pbody">
+        <div class="ptag">Power BI · Feb–Mar 2026</div>
+        <div class="ptitle">Superbike Analytics Dashboard</div>
+        <p class="pdesc">Interactive Power BI dashboard analyzing superbike data (2018–2023) across manufacturers &amp; global regions. Kawasaki Ninja H2 led with 231 avg HP; North America = 50% production.</p>
+        <div class="pfeats"><span class="feat">Power BI</span><span class="feat">KPI Cards</span><span class="feat">DAX</span><span class="feat">Scatter Plot</span><span class="feat">Donut Chart</span><span class="feat">Dynamic Filters</span><span class="feat">Year Slicer</span></div>
+      </div>
+    </div>
+    <div class="pcard fade-in">
+      <div class="pthumb" style="background:linear-gradient(135deg,#0a1020,#0d1830);">
+        <div style="position:relative;z-index:1;display:flex;align-items:flex-end;gap:10px;height:140px;padding:1.2rem 2rem;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;"><div style="width:100%;height:60px;background:linear-gradient(to top,#6c63ff,#a89bff);border-radius:6px 6px 0 0;"></div><div style="font-size:0.56rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">Jan</div></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;"><div style="width:100%;height:95px;background:linear-gradient(to top,#ff6584,#ffaabb);border-radius:6px 6px 0 0;"></div><div style="font-size:0.56rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">Feb</div></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;"><div style="width:100%;height:48px;background:linear-gradient(to top,#43e97b,#a8f0c0);border-radius:6px 6px 0 0;"></div><div style="font-size:0.56rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">Mar</div></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;"><div style="width:100%;height:115px;background:linear-gradient(to top,#6c63ff,#a89bff);border-radius:6px 6px 0 0;"></div><div style="font-size:0.56rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">Apr</div></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;"><div style="width:100%;height:74px;background:linear-gradient(to top,#ffd166,#ffe8a0);border-radius:6px 6px 0 0;"></div><div style="font-size:0.56rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">May</div></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;"><div style="width:100%;height:98px;background:linear-gradient(to top,#38bdf8,#a0deff);border-radius:6px 6px 0 0;"></div><div style="font-size:0.56rem;color:#9090bb;font-family:'JetBrains Mono',monospace;">Jun</div></div>
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,var(--card));pointer-events:none;"></div>
+      </div>
+      <div class="pbody">
+        <div class="ptag">Microsoft Excel · 2024</div>
+        <div class="ptitle">Expense &amp; Sales Analysis Dashboard</div>
+        <p class="pdesc">Analyzed expense and sales data using Pivot Tables and slicers; built interactive summary dashboards for decision support with charts and trend analysis.</p>
+        <div class="pfeats"><span class="feat">Pivot Tables</span><span class="feat">Slicers</span><span class="feat">Charts</span><span class="feat">Trend Analysis</span><span class="feat">Summary Reports</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- EDUCATION -->
+<div class="sw" id="education">
+  <div class="sh fade-in"><span class="snum">05</span><h2 class="stitle">Education</h2><div class="sline"></div></div>
+  <div class="estack">
+    <div class="edcard ed1 fade-in">
+      <div>
+        <div class="edinst">Adhiyamaan College of Engineering</div>
+        <div class="eddeg">B.E. Electronics &amp; Communication Engineering</div>
+        <div class="edchips"><span class="edch g">2022 – 2026</span><span class="edch b">Krishnagiri, Tamil Nadu</span></div>
+      </div>
+      <div class="gbox"><div class="gn">7.61</div><div class="gl">CGPA / 10</div></div>
+    </div>
+    <div class="edcard ed2 fade-in">
+      <div>
+        <div class="edinst">Swami Vivekananda Matric Hr. Sec. School</div>
+        <div class="eddeg">Higher Secondary — Computer Science · State Board</div>
+        <div class="edchips"><span class="edch g">2021 – 2022</span></div>
+      </div>
+      <div class="gbox"><div class="gn">A</div><div class="gl">GRADE</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="strip">
+<div class="sw" id="certifications">
+  <div class="sh fade-in"><span class="snum">06</span><h2 class="stitle">Certifications</h2><div class="sline"></div></div>
+  <div class="cgrid">
+    <div class="ccard cc1 fade-in"><div class="cicon">🤖</div><div class="cname">Artificial Intelligence Fundamentals</div><div class="cyr">2025</div></div>
+    <div class="ccard cc2 fade-in"><div class="cicon">⚙️</div><div class="cname">Problem Solving and Process Controls</div><div class="cyr">2025</div></div>
+    <div class="ccard cc3 fade-in"><div class="cicon">🎯</div><div class="cname">Communication and Personality Dynamics</div><div class="cyr">2025</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CONTACT -->
+<div class="conwrap" id="contact">
+  <h2 class="contitle fade-in">Let's Work Together</h2>
+  <p class="consub fade-in">Open to Data Analyst &amp; Business Analyst roles in Tamil Nadu, Chennai &amp; Bengaluru.</p>
+  <div class="conlinks fade-in">
+    <a href="tel:+916382712735" class="clink">📞 +91 63827 12735</a>
+    <a href="mailto:arulees87@gmail.com" class="clink">✉️ arulees87@gmail.com</a>
+    <a href="https://linkedin.com/in/aruleeswaran-k-53267a259" target="_blank" class="clink">💼 LinkedIn</a>
+    <a href="https://github.com/ARULEESWARAN1" target="_blank" class="clink">🐙 GitHub</a>
+    <a href="https://aruleeswaran1.github.io/portfolio/" target="_blank" class="clink">🌐 Portfolio</a>
+  </div>
+</div>
+
+<footer>
+  <div>© 2026 Aruleeswaran K — Data Analyst</div>
+  <div>Built with passion for data ✦ Tamil Nadu, India</div>
+</footer>
+
+<script>
+function toggleTheme(){
+  const h=document.documentElement,b=document.getElementById('themeBtn');
+  if(h.getAttribute('data-theme')==='dark'){h.setAttribute('data-theme','light');b.textContent='🌙 Dark';}
+  else{h.setAttribute('data-theme','dark');b.textContent='☀ Light';}
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('[id]'),links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  links.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--accent)':'';});
+});
+</script>
+</body>
+</html>
